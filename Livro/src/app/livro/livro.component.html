@@ -1,0 +1,25 @@
+
+<div class="wrappers bg-dark" data-bs-theme="dark">
+    <a class="btn btn-info" href="/add">+ add livro</a>
+    <table class="table table-dark table-striped table-livros">
+        <tr>
+            <th>ID</th>
+            <th>Titulo</th>
+            <th>Autor</th>
+            <th></th>
+            <th></th>
+        </tr>
+        <tr *ngFor="let livro of livros">
+            <td>{{livro.idLivro}}</td>
+            <td>{{livro.titulo}}</td>
+            <td>{{livro.nomeAutor}}</td>
+            <td>
+                <button type="button" class="btn btn-outline-danger" (click)="deleteLivros(livro.idLivro)">delete</button>
+            </td>
+            <td>
+                <a class="btn btn-outline-warning" href="edit/{{livro.idLivro}}">edit</a>
+            </td>
+        </tr>
+    </table>
+    
+</div>

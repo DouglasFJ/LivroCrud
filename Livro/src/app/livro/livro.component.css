@@ -1,0 +1,14 @@
+
+.wrappers{
+    width: 60%;
+}
+
+.table-livros{
+
+    width: 95%;
+
+    margin: 15px;
+    padding: 20px !important;
+    border-radius: 10px;
+
+}
