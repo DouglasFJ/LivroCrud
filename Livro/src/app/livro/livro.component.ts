@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { LivroService } from '../services/livro.service'
 import { Livro } from '../models/livro';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-livro',
@@ -10,11 +11,20 @@ import { Livro } from '../models/livro';
 export class LivroComponent {
 
   livros: Livro[] = [];
+  titulo = this.activatedRoute.snapshot.paramMap.get('titulo');
 
-  constructor (private apiLivro: LivroService) {}
+  constructor (
+    private apiLivro: LivroService,
+    private activatedRoute: ActivatedRoute
+  ) {}
 
   ngOnInit() {
-    this.getLivros();
+    if(this.titulo){
+      this.getLivrosByTitulo(this.titulo)
+      location.reload()
+    }else{
+      this.getLivros();
+    }
   }
 
   getLivros(){
@@ -27,6 +37,11 @@ export class LivroComponent {
       this.getLivros;
     })
     location.reload()
+  }
+  getLivrosByTitulo(titulo: String){
+    this.apiLivro.getLivroByTitulo(titulo).subscribe((livros: Livro[])=>{
+      this.livros = livros
+    })
   }
 
 }

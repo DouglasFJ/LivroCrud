@@ -21,6 +21,10 @@ export class LivroService {
     return this.httpClient.get<Livro[]>(this.url)
   }
 
+  getLivroByTitulo(titulo: String): Observable<Livro[]>{    
+    return this.httpClient.get<Livro[]>(`${this.url}/titulo/${titulo}`)
+  }
+
   getLivrobyId(id: number): Observable<Livro>{
     return this.httpClient.get<Livro>(`${this.url}/${id}`)
   }

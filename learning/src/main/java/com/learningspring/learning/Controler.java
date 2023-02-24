@@ -60,5 +60,11 @@ public class Controler {
 		
 		return livro;
 	}
+	
+	@GetMapping("/titulo/{titulo}")
+	public List<Livro> buscarLivroTitulo(@PathVariable String titulo) {
+		List<Livro> livro = repository.findByTituloLike("%"+titulo+"%");
+		return livro;
+	}
 
 }

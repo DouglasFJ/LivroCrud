@@ -6,6 +6,7 @@ import { LivroformComponent } from './livroform/livroform.component';
 
 const appRoutes: Routes = [
   { path: '', component: LivroComponent },
+  { path: 'titulo/:titulo', component: LivroComponent },
   { path: 'add', component: LivroformComponent},
   { path: 'edit/:id', component: LivroformComponent}
 ];
